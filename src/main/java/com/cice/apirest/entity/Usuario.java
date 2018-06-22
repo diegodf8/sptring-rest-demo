@@ -1,19 +1,24 @@
 package com.cice.apirest.entity;
 
 import lombok.Data;
-import org.springframework.data.annotation.Id;
 
-import javax.persistence.Entity;
-
-import javax.persistence.Table;
+import javax.persistence.*;
 
 @Entity
 @Table(name="usuarios")
 @Data
 public class Usuario {
     @Id
-    private String id;
+    @GeneratedValue
+    @Column(name ="id")
+    private Long id;
+
+    @Column(name ="nombre")
     private String nombre;
+
+    @Column(name ="apellidos")
     private String apellidos;
+
+    @Column(name ="email")
     private String email;
 }

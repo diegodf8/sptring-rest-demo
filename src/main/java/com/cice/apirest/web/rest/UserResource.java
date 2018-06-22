@@ -29,6 +29,7 @@ public class UserResource {
 
     @RequestMapping(method = RequestMethod.POST)
     public String crearUsuario(@PathParam (value = "nombre") String nombre){
+        gestionUsuarios.crearUsuario(nombre);
         return "HOLA " + nombre;
     }
 
