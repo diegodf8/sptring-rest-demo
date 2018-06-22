@@ -1,14 +1,35 @@
 package com.cice.apirest.web.rest;
 
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RestController;
+import com.cice.apirest.service.GestionUsuarios;
+import com.cice.apirest.service.IGestionUsuarios;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.*;
 
-@RestController("/Saludo")
+import javax.websocket.server.PathParam;
+
+import java.util.List;
+
+import static org.springframework.web.bind.annotation.RequestMethod.*;
+
+@RestController("/usuario")
 public class UserResource {
 
-    @GetMapping
-    public String getSaludo(){
-        return"Hola Spring";
+    @Autowired
+    @Qualifier("Gestion")
+    IGestionUsuarios gestionUsuarios;
+
+    @RequestMapping(method = RequestMethod.GET)
+    public ResponseEntity<List<String>> getUsuarios(){
+        gestionUsuarios.listaNombres();
+        return new ResponseEntity<>(gestionUsuarios.listaNombres(), HttpStatus.ACCEPTED);
+    }
+
+    @RequestMapping(method = RequestMethod.POST)
+    public String crearUsuario(@PathParam (value = "nombre") String nombre){
+        return "HOLA " + nombre;
     }
 
 }
