@@ -13,7 +13,7 @@ import java.util.stream.Collectors;
 public class GestionUsuarios implements IGestionUsuarios {
 
     @Autowired
-    UsuarioRepository usuarioRepository
+    UsuarioRepository usuarioRepository;
 
     @Override
     public List<String> listaNombres() {
