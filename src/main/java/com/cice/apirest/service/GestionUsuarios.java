@@ -31,16 +31,18 @@ public class GestionUsuarios implements IGestionUsuarios {
     }
 
     @Override
-    public boolean actualizarUsuario(String nombre) {
+    public boolean actualizarUsuario(Long id) {
+        Usuario usuario = new Usuario();
+        usuario = usuarioRepository.getOne(id);
+        usuario.setEmail("diego@hotmail.com");
+        usuarioRepository.save(usuario);
 
         return false;
     }
 
     @Override
-    public boolean eliminarUsuario(String nombre) {
-        Usuario usuario = new Usuario();
-        usuario.setNombre(nombre);
-        usuarioRepository.delete(usuario);
+    public boolean eliminarUsuario(String id) {
+        usuarioRepository.deleteById(Long.parseLong(id));
         return true;
     }
 }

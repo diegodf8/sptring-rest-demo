@@ -25,7 +25,7 @@ public interface IGestionUsuarios {
      * @return
      */
 
-    boolean actualizarUsuario(String nombre);
+    boolean actualizarUsuario(Long id);
 
     /**
      * Metodo para eliminar un usuario de base de datos
