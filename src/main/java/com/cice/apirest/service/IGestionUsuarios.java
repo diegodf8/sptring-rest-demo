@@ -16,7 +16,7 @@ public interface IGestionUsuarios {
      * @return
      */
 
-    boolean crearUsuario(String nombre);
+    boolean crearUsuario(String nombre, String apellidos);
 
 
     /**
@@ -33,5 +33,5 @@ public interface IGestionUsuarios {
      * @return
      */
 
-    String eliminarUsuario(String nombre);
+    boolean eliminarUsuario(String nombre);
 }

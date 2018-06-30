@@ -22,20 +22,25 @@ public class GestionUsuarios implements IGestionUsuarios {
     }
 
     @Override
-    public boolean crearUsuario(String nombre) {
+    public boolean crearUsuario(String nombre, String apellidos) {
         Usuario usuario = new Usuario();
         usuario.setNombre(nombre);
+        usuario.setApellidos(apellidos);
         usuarioRepository.save(usuario);
-        return false;
+        return true;
     }
 
     @Override
     public boolean actualizarUsuario(String nombre) {
+
         return false;
     }
 
     @Override
-    public String eliminarUsuario(String nombre) {
-        return null;
+    public boolean eliminarUsuario(String nombre) {
+        Usuario usuario = new Usuario();
+        usuario.setNombre(nombre);
+        usuarioRepository.delete(usuario);
+        return true;
     }
 }

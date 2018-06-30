@@ -1,6 +1,5 @@
 package com.cice.apirest.web.rest;
 
-import com.cice.apirest.service.GestionUsuarios;
 import com.cice.apirest.service.IGestionUsuarios;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
@@ -12,7 +11,6 @@ import javax.websocket.server.PathParam;
 
 import java.util.List;
 
-import static org.springframework.web.bind.annotation.RequestMethod.*;
 
 @RestController("/usuario")
 public class UserResource {
@@ -28,9 +26,14 @@ public class UserResource {
     }
 
     @RequestMapping(method = RequestMethod.POST)
-    public String crearUsuario(@PathParam (value = "nombre") String nombre){
-        gestionUsuarios.crearUsuario(nombre);
+    public String crearUsuario(@PathParam (value = "nombre") String nombre,
+                               @PathParam (value = "apellidos") String apellidos){
+        gestionUsuarios.crearUsuario(nombre,apellidos);
         return "Usuario creado " + nombre;
     }
+
+
+
+
 
 }
